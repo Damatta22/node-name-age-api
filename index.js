@@ -1,12 +1,12 @@
 
-const express = require("express")
-//import cors from 'cors'
-const uuid = require("uuid")
+import express from "express"
+import cors from 'cors'
+import{v4} from "uuid"
 const port = 3001
 const app = express()
 app.use(express.json())
 
-//app.use(cors())
+app.use(cors())
 
 const users = []
 
@@ -35,7 +35,7 @@ app.get('/users', (request, response) => {
 app.post('/users', (request, response) => {
     const { name, age } = request.body
 
-    const user = { id: uuid.v4(), name, age }
+    const user = { id: v4(), name, age }
 
     users.push(user)
     return response.status(201).json(user)
